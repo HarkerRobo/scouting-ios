@@ -1,0 +1,6 @@
+framework module Pods_scouting1072Tests {
+  umbrella header "Pods-scouting1072Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
