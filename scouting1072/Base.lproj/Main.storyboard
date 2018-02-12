@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RsB-Io-eKk">
+    <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,22 +15,18 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SignInViewController" customModule="scouting1072" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jdP-p0-UCW" customClass="GIDSignInButton">
-                                <rect key="frame" x="126" y="308" width="98" height="51"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O5N-Yt-2Ye">
-                                <rect key="frame" x="157" y="384" width="60" height="30"/>
+                                <rect key="frame" x="303.5" y="92" width="60" height="30"/>
                                 <state key="normal" title="Sign Out"/>
                                 <connections>
                                     <action selector="signOut:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uGy-Jx-WX5"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Getting response from server..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQ4-kz-cN2">
-                                <rect key="frame" x="8" y="132" width="359" height="28"/>
+                                <rect key="frame" x="8" y="112" width="652" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="Tm6-V6-W3s"/>
                                 </constraints>
@@ -39,7 +35,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Scouting!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C52-JW-Noa">
-                                <rect key="frame" x="33" y="101" width="309" height="26"/>
+                                <rect key="frame" x="33" y="81" width="602" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="8Xo-RQ-ZuD"/>
                                 </constraints>
@@ -47,10 +43,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jdP-p0-UCW" customClass="GIDSignInButton">
+                                <rect key="frame" x="138" y="308" width="390" height="51"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jdP-p0-UCW" secondAttribute="trailing" constant="151" id="1zY-Wl-7oA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jdP-p0-UCW" secondAttribute="trailing" constant="139" id="1zY-Wl-7oA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="O5N-Yt-2Ye" secondAttribute="bottom" constant="253" id="D8s-ru-3je"/>
                             <constraint firstItem="fQ4-kz-cN2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="M33-RH-w2M"/>
                             <constraint firstItem="C52-JW-Noa" firstAttribute="centerX" secondItem="fQ4-kz-cN2" secondAttribute="centerX" id="RX0-RH-IMa"/>
@@ -59,7 +59,7 @@
                             <constraint firstItem="jdP-p0-UCW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ig7-tb-asq"/>
                             <constraint firstItem="fQ4-kz-cN2" firstAttribute="top" secondItem="C52-JW-Noa" secondAttribute="bottom" constant="5" id="irg-co-W54"/>
                             <constraint firstItem="C52-JW-Noa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="81" id="k8z-0N-PhE"/>
-                            <constraint firstItem="jdP-p0-UCW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="126" id="lC7-0B-8Z6"/>
+                            <constraint firstItem="jdP-p0-UCW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="138" id="lC7-0B-8Z6"/>
                             <constraint firstItem="O5N-Yt-2Ye" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xKx-hg-FfH"/>
                             <constraint firstItem="C52-JW-Noa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="33" id="xZr-HV-FMu"/>
                         </constraints>
@@ -70,7 +70,7 @@
                         <outlet property="label" destination="C52-JW-Noa" id="olt-TA-ar6"/>
                         <outlet property="responseCode" destination="fQ4-kz-cN2" id="ckB-r4-18a"/>
                         <outlet property="signOutButton" destination="O5N-Yt-2Ye" id="376-5B-uen"/>
-                        <segue destination="RsB-Io-eKk" kind="show" identifier="ToInterSegue" id="zHN-VL-VKt"/>
+                        <segue destination="RsB-Io-eKk" kind="show" identifier="SignInToInterSegue" id="zHN-VL-VKt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -80,17 +80,93 @@
         <!--Intermediate View Controller-->
         <scene sceneID="JEO-J4-ReY">
             <objects>
-                <viewController id="RsB-Io-eKk" customClass="IntermediateViewController" sceneMemberID="viewController">
+                <viewController id="RsB-Io-eKk" customClass="IntermediateViewController" customModule="scouting1072" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ezw-Ia-aEd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="9um-f0-stI">
+                                <rect key="frame" x="178" y="324" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="AFh-Vb-4pd"/>
                     </view>
+                    <connections>
+                        <segue destination="oba-64-F2J" kind="show" identifier="InterToAutonSegue" id="p3I-qY-dun"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yIz-Ba-SQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1154" y="34"/>
+            <point key="canvasLocation" x="1159" y="34"/>
+        </scene>
+        <!--Auton View Controller-->
+        <scene sceneID="E5B-r5-TIC">
+            <objects>
+                <viewController id="oba-64-F2J" customClass="AutonViewController" customModule="scouting1072" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sox-xY-q1d">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="field.png" translatesAutoresizingMaskIntoConstraints="NO" id="BVt-Bl-7pY">
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="1qU-FF-cZ5">
+                                <rect key="frame" x="-133" y="172" width="312" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.7175678014755249" green="0.7176927924156189" blue="0.71755987405776978" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I3d-vd-FQY" customClass="Switch" customModule="scouting1072" customModuleProvider="target">
+                                <rect key="frame" x="144" y="108" width="57" height="159"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="0_0_0"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GmT-mE-NWG" customClass="Switch" customModule="scouting1072" customModuleProvider="target">
+                                <rect key="frame" x="304" y="96" width="57" height="182"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="0_0_1"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvd-2R-XEG" customClass="Switch" customModule="scouting1072" customModuleProvider="target">
+                                <rect key="frame" x="465" y="107" width="57" height="159"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="0_0_2"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jye-dq-C5P">
+                                <rect key="frame" x="246" y="304" width="172" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Confirm Starting Position"/>
+                                <connections>
+                                    <action selector="actionButtonPressed:" destination="oba-64-F2J" eventType="touchUpInside" id="xNK-sL-502"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jte-oF-eEr">
+                                <rect key="frame" x="299" y="43" width="71" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Geo-7D-BUx"/>
+                    </view>
+                    <connections>
+                        <outlet property="actionButton" destination="jye-dq-C5P" id="Syj-Kv-lke"/>
+                        <outlet property="fieldImage" destination="BVt-Bl-7pY" id="XyB-Xr-3NU"/>
+                        <outlet property="initialBotPosition" destination="1qU-FF-cZ5" id="Izq-cd-osM"/>
+                        <outlet property="timerLabel" destination="Jte-oF-eEr" id="bv6-oG-Hgs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dSs-xC-hpp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1939.8800599700151" y="32.799999999999997"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="field.png" width="1098" height="617"/>
+    </resources>
 </document>
