@@ -1,6 +1,0 @@
-framework module Pods_scouting1072UITests {
-  umbrella header "Pods-scouting1072UITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
