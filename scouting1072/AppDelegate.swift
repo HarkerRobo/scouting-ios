@@ -10,7 +10,15 @@ import UIKit
 import Google
 import GoogleSignIn
 
-var user : GIDGoogleUser?
+extension Notification.Name {
+    static let userSignedIn = Notification.Name("userSignedIn")
+}
+
+var user : GIDGoogleUser? {
+    didSet {
+        NotificationCenter.default.post(Notification(name: .userSignedIn))
+    }
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -23,13 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         var configureError: NSError?
-        //print(clientID)
-        //GIDSignIn.sharedInstance().clientID = "test"
         GGLContext.sharedInstance().configureWithError(&configureError)
         assert(configureError == nil, "Error configuring Google services: \(String(describing: configureError))")
-        
         GIDSignIn.sharedInstance().delegate = self
-        
         return true
     }
     private func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
@@ -59,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     //MARK: - Func to rotate only one view controller
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         if (shouldRotate == true){
-            return UIInterfaceOrientationMask.all
+            return UIInterfaceOrientationMask.portrait
         }
         return UIInterfaceOrientationMask.landscape
     }

@@ -10,41 +10,43 @@
 		6C02CBBF202E55A700607242 /* FieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C02CBBE202E55A600607242 /* FieldViewController.swift */; };
 		6C51CE80201BF944008E7A14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C51CE7F201BF944008E7A14 /* GoogleService-Info.plist */; };
 		6C8F1F46202431DE00E523C8 /* IntermediateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8F1F45202431DE00E523C8 /* IntermediateViewController.swift */; };
+		6CA5BEFE2065826E009CB984 /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA5BEFF2065826E009CB984 /* GoogleToolboxForMac.framework */; };
+		6CA5BF0020658275009CB984 /* GTMOAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA5BF0220658275009CB984 /* GTMOAuth2.framework */; };
+		6CA5BF0120658275009CB984 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA5BF0320658275009CB984 /* GTMSessionFetcher.framework */; };
 		6CBCE5DC2032187A009E99F5 /* field.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CBCE5DB2032187A009E99F5 /* field.png */; };
 		6CD4E106201A8EE500E83826 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD4E105201A8EE500E83826 /* AppDelegate.swift */; };
 		6CD4E108201A8EE500E83826 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD4E107201A8EE500E83826 /* SignInViewController.swift */; };
 		6CD4E10B201A8EE500E83826 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CD4E109201A8EE500E83826 /* Main.storyboard */; };
-		6CD4E110201A8EE500E83826 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CD4E10E201A8EE500E83826 /* LaunchScreen.storyboard */; };
 		6CD4E13B201A965700E83826 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CD4E13A201A965600E83826 /* SafariServices.framework */; };
 		6CD4E13D201A966000E83826 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CD4E13C201A966000E83826 /* SystemConfiguration.framework */; };
 		6CE7CECD203117210016E5AD /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE7CECC203117210016E5AD /* Switch.swift */; };
 		6CF756AE203B9F2400A19581 /* OtherInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF756AD203B9F2400A19581 /* OtherInfoViewController.swift */; };
 		6CFF7D012038FD60008EC1BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CFF7D002038FD60008EC1BE /* Assets.xcassets */; };
-		AA302E368CE1438AF4CA4C5C /* Pods_scouting1072.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED7C4C92725EBA6019296D48 /* Pods_scouting1072.framework */; };
+		F414E2DCB21FDD4D91E6BA70 /* Pods_scouting1072.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32C3880F02D4D6D4B17941F3 /* Pods_scouting1072.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		58DBA468DFA68FC6785DC1FC /* Pods-scouting1072.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-scouting1072.release.xcconfig"; path = "Pods/Target Support Files/Pods-scouting1072/Pods-scouting1072.release.xcconfig"; sourceTree = "<group>"; };
+		32C3880F02D4D6D4B17941F3 /* Pods_scouting1072.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_scouting1072.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B2192CAFCB086AB01C83A34 /* Pods-scouting1072.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-scouting1072.release.xcconfig"; path = "Pods/Target Support Files/Pods-scouting1072/Pods-scouting1072.release.xcconfig"; sourceTree = "<group>"; };
 		6C02CBBE202E55A600607242 /* FieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldViewController.swift; sourceTree = "<group>"; };
 		6C51CE7F201BF944008E7A14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6C7374B7201B94FF0054C5BF /* scouting1072-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "scouting1072-Bridging-Header.h"; sourceTree = "<group>"; };
 		6C8F1F45202431DE00E523C8 /* IntermediateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntermediateViewController.swift; sourceTree = "<group>"; };
+		6CA5BEFF2065826E009CB984 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA5BF0220658275009CB984 /* GTMOAuth2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GTMOAuth2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA5BF0320658275009CB984 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CBCE5DB2032187A009E99F5 /* field.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = field.png; sourceTree = "<group>"; };
 		6CD4E102201A8EE500E83826 /* scouting1072.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = scouting1072.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CD4E105201A8EE500E83826 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6CD4E107201A8EE500E83826 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		6CD4E10A201A8EE500E83826 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6CD4E10F201A8EE500E83826 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6CD4E111201A8EE500E83826 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CD4E13A201A965600E83826 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		6CD4E13C201A966000E83826 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6CE7CECC203117210016E5AD /* Switch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
 		6CF756AD203B9F2400A19581 /* OtherInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherInfoViewController.swift; sourceTree = "<group>"; };
 		6CFF7D002038FD60008EC1BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		82B57E53F842FFAB400F4442 /* Pods-scouting1072.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-scouting1072.debug.xcconfig"; path = "Pods/Target Support Files/Pods-scouting1072/Pods-scouting1072.debug.xcconfig"; sourceTree = "<group>"; };
-		A42D818BDD180895A8EF205E /* Pods_scouting1072UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_scouting1072UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E779D1A67FA621F3A7CA8D75 /* Pods_scouting1072Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_scouting1072Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED7C4C92725EBA6019296D48 /* Pods_scouting1072.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_scouting1072.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76582266737F46BA21ECE672 /* Pods-scouting1072.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-scouting1072.debug.xcconfig"; path = "Pods/Target Support Files/Pods-scouting1072/Pods-scouting1072.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,9 +54,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CA5BF0020658275009CB984 /* GTMOAuth2.framework in Frameworks */,
+				6CA5BF0120658275009CB984 /* GTMSessionFetcher.framework in Frameworks */,
+				6CA5BEFE2065826E009CB984 /* GoogleToolboxForMac.framework in Frameworks */,
 				6CD4E13D201A966000E83826 /* SystemConfiguration.framework in Frameworks */,
 				6CD4E13B201A965700E83826 /* SafariServices.framework in Frameworks */,
-				AA302E368CE1438AF4CA4C5C /* Pods_scouting1072.framework in Frameworks */,
+				F414E2DCB21FDD4D91E6BA70 /* Pods_scouting1072.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,8 +73,8 @@
 				6CD4E104201A8EE500E83826 /* scouting1072 */,
 				6CD4E103201A8EE500E83826 /* Products */,
 				6CD4E139201A965600E83826 /* Frameworks */,
-				C2691887F899E5B6D0A16B6F /* Pods */,
 				6C7374B7201B94FF0054C5BF /* scouting1072-Bridging-Header.h */,
+				7206C4D702C6F3360C7C98B1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,11 +94,10 @@
 				6C8F1F45202431DE00E523C8 /* IntermediateViewController.swift */,
 				6C02CBBE202E55A600607242 /* FieldViewController.swift */,
 				6CF756AD203B9F2400A19581 /* OtherInfoViewController.swift */,
-				6CD4E109201A8EE500E83826 /* Main.storyboard */,
 				6CE7CECC203117210016E5AD /* Switch.swift */,
+				6CD4E109201A8EE500E83826 /* Main.storyboard */,
 				6CFF7D002038FD60008EC1BE /* Assets.xcassets */,
 				6CBCE5DB2032187A009E99F5 /* field.png */,
-				6CD4E10E201A8EE500E83826 /* LaunchScreen.storyboard */,
 				6CD4E111201A8EE500E83826 /* Info.plist */,
 			);
 			path = scouting1072;
@@ -102,20 +106,21 @@
 		6CD4E139201A965600E83826 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6CA5BF0220658275009CB984 /* GTMOAuth2.framework */,
+				6CA5BF0320658275009CB984 /* GTMSessionFetcher.framework */,
+				6CA5BEFF2065826E009CB984 /* GoogleToolboxForMac.framework */,
 				6CD4E13C201A966000E83826 /* SystemConfiguration.framework */,
 				6CD4E13A201A965600E83826 /* SafariServices.framework */,
-				ED7C4C92725EBA6019296D48 /* Pods_scouting1072.framework */,
-				E779D1A67FA621F3A7CA8D75 /* Pods_scouting1072Tests.framework */,
-				A42D818BDD180895A8EF205E /* Pods_scouting1072UITests.framework */,
+				32C3880F02D4D6D4B17941F3 /* Pods_scouting1072.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C2691887F899E5B6D0A16B6F /* Pods */ = {
+		7206C4D702C6F3360C7C98B1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				82B57E53F842FFAB400F4442 /* Pods-scouting1072.debug.xcconfig */,
-				58DBA468DFA68FC6785DC1FC /* Pods-scouting1072.release.xcconfig */,
+				76582266737F46BA21ECE672 /* Pods-scouting1072.debug.xcconfig */,
+				6B2192CAFCB086AB01C83A34 /* Pods-scouting1072.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -127,12 +132,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6CD4E12A201A8EE500E83826 /* Build configuration list for PBXNativeTarget "scouting1072" */;
 			buildPhases = (
-				A1865ACE713BBD7B622E7AD2 /* [CP] Check Pods Manifest.lock */,
+				5C1723EDDBB681B0A4161929 /* [CP] Check Pods Manifest.lock */,
 				6CD4E0FE201A8EE500E83826 /* Sources */,
 				6CD4E0FF201A8EE500E83826 /* Frameworks */,
 				6CD4E100201A8EE500E83826 /* Resources */,
-				099E3810A264D3EA0CDB008B /* [CP] Embed Pods Frameworks */,
-				131356EB518645E06B1A6CD0 /* [CP] Copy Pods Resources */,
+				123CA52B73D57F1E7B7B5D2E /* [CP] Embed Pods Frameworks */,
+				1EF327CCD9EFBC44D416DCA4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -183,7 +188,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6CD4E110201A8EE500E83826 /* LaunchScreen.storyboard in Resources */,
 				6CBCE5DC2032187A009E99F5 /* field.png in Resources */,
 				6C51CE80201BF944008E7A14 /* GoogleService-Info.plist in Resources */,
 				6CD4E10B201A8EE500E83826 /* Main.storyboard in Resources */,
@@ -194,7 +198,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		099E3810A264D3EA0CDB008B /* [CP] Embed Pods Frameworks */ = {
+		123CA52B73D57F1E7B7B5D2E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -216,7 +220,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-scouting1072/Pods-scouting1072-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		131356EB518645E06B1A6CD0 /* [CP] Copy Pods Resources */ = {
+		1EF327CCD9EFBC44D416DCA4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -227,14 +231,14 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-scouting1072/Pods-scouting1072-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A1865ACE713BBD7B622E7AD2 /* [CP] Check Pods Manifest.lock */ = {
+		5C1723EDDBB681B0A4161929 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -277,14 +281,6 @@
 				6CD4E10A201A8EE500E83826 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		6CD4E10E201A8EE500E83826 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6CD4E10F201A8EE500E83826 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -399,21 +395,23 @@
 		};
 		6CD4E12B201A8EE500E83826 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82B57E53F842FFAB400F4442 /* Pods-scouting1072.debug.xcconfig */;
+			baseConfigurationReference = 76582266737F46BA21ECE672 /* Pods-scouting1072.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7AB3D4ZA93;
+				DEVELOPMENT_TEAM = MGX2Y8QTWG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = scouting1072/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.aydintiritoglu.scouting1072;
+				PRODUCT_BUNDLE_IDENTIFIER = com.harker.scouting1072;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "scouting1072-Bridging-Header.h";
@@ -426,21 +424,23 @@
 		};
 		6CD4E12C201A8EE500E83826 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 58DBA468DFA68FC6785DC1FC /* Pods-scouting1072.release.xcconfig */;
+			baseConfigurationReference = 6B2192CAFCB086AB01C83A34 /* Pods-scouting1072.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7AB3D4ZA93;
+				DEVELOPMENT_TEAM = MGX2Y8QTWG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = scouting1072/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(OTHER_LDFLAGS)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.aydintiritoglu.scouting1072;
+				PRODUCT_BUNDLE_IDENTIFIER = com.harker.scouting1072;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "scouting1072-Bridging-Header.h";

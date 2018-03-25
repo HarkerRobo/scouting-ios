@@ -15,6 +15,13 @@ class Switch: UIButton {
         self.setTitleColor(UIColor.clear, for: .normal)
         self.layer.borderColor = scoutingUserInfo.scouting.rank == 10 ? UIColor.gray.cgColor : scoutingUserInfo.scouting.blue ? UIColor.blue.cgColor : UIColor.red.cgColor
         self.layer.borderWidth = 5.0
+        // MARK: When I wrote this next section, only I and the compiler understood it. Now only the compiler understands it. If you mess with this code, home vs. away will be very broken, so don't.
+        if self.frame.midX <= 300 && (self.titleLabel?.text == "0_0_2" || self.titleLabel?.text == "0_0_0") {
+            self.titleLabel?.text = scoutingUserInfo.scouting.blue ? "0_0_2" : "0_0_0"
+        }
+        if self.frame.midX >= 300 && (self.titleLabel?.text == "0_0_2" || self.titleLabel?.text == "0_0_0") {
+            self.titleLabel?.text = scoutingUserInfo.scouting.blue ? "0_0_0" : "0_0_2"
+        }
         if sergeant {
             if self.titleLabel?.text?.first == Character("0") {
                 self.isHidden = true
@@ -29,7 +36,18 @@ class Switch: UIButton {
                 self.layer.borderColor = UIColor.lightGray.cgColor
                 self.layer.borderWidth = 100.0
             }
+            if self.titleLabel?.text == "0_0_3" {
+                self.isHidden = true
+            }
         } else {
+            self.layer.borderColor = scoutingUserInfo.scouting.blue ? UIColor.blue.cgColor : UIColor.red.cgColor
+            if self.titleLabel?.text == "0_0_3" {
+                if self.frame.midX >= 300 {
+                    self.isHidden = !scoutingUserInfo.scouting.blue
+                } else {
+                    self.isHidden = scoutingUserInfo.scouting.blue
+                }
+            }
             if self.titleLabel?.text?.first == Character("1") {
                 self.isHidden = true
             }
@@ -38,18 +56,30 @@ class Switch: UIButton {
     
     @objc func onPress() {
         print("Switch Pressed")
+        self.layer.borderWidth = 100.0
         if autonStarted {
+            impact.impactOccurred()
+            let date = NSDate().timeIntervalSince1970
             if sergeant {
-                autonControlTimes[NSDate().timeIntervalSince1970] = self.titleLabel?.text
+                autonControlTimes[date] = self.titleLabel?.text
             } else {
-                autonPresses[NSDate().timeIntervalSince1970] = self.titleLabel?.text
+                autonPresses[date] = self.titleLabel?.text
             }
+            autonUndo.append(date)
         } else if teleOpStarted {
+            impact.impactOccurred()
+            let date = NSDate().timeIntervalSince1970
             if sergeant {
-                teleOpControlTimes[NSDate().timeIntervalSince1970] = self.titleLabel?.text
+                teleOpControlTimes[date] = self.titleLabel?.text
             } else {
-                teleOpPresses[NSDate().timeIntervalSince1970] = self.titleLabel?.text
+                teleOpPresses[date] = self.titleLabel?.text
             }
+            teleOpUndo.append(date)
+        }
+        if !sergeant {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                self.layer.borderWidth = 5.0
+            })
         }
     }
 }

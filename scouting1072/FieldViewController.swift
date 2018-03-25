@@ -6,18 +6,28 @@
 //  Copyright © 2018 Aydin Tiritoglu. All rights reserved.
 //
 
+let impact = UIImpactFeedbackGenerator()
 var appdelegate = AppDelegate()
 var startingPosition = Float()
 var autonStartTime = Double()
 var teleOpStartTime = Double()
 var autonStarted = false
 var teleOpStarted = false
+var autonUndo = [Double]()
+var teleOpUndo = [Double]()
 var autonPresses = [Double: String]()
 var teleOpPresses = [Double: String]()
 var autonControlTimes = [Double: String]()
 var teleOpControlTimes = [Double: String]()
 var timer = Timer()
 var crossedLine = false
+
+func showAlert(currentVC: UIViewController, title: String, text: String) {
+    let alertController = UIAlertController(title: title, message: text, preferredStyle: .alert)
+    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+    alertController.addAction(action)
+    currentVC.present(alertController, animated: true, completion: nil)
+}
 
 // 1 is red, 0 is neutral, -1 is blue
 var redSwitch = 0 {
@@ -95,21 +105,52 @@ class FieldViewController: UIViewController {
         blueControlBlue.layer.borderWidth = 100.0
     }
     
+    @IBOutlet weak var initialPositionXConstraint: NSLayoutConstraint!
+    @IBOutlet weak var undoHeight: NSLayoutConstraint!
     @IBOutlet weak var fieldImage: UIImageView!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var initialBotPosition: UISlider! {
         didSet {
-            initialBotPosition.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2))
+            initialBotPosition.transform = CGAffineTransform(rotationAngle: scoutingUserInfo.scouting.blue ? -(CGFloat(Double.pi / 2)) : CGFloat(Double.pi / 2))
+        }
+    }
+    
+    @IBAction func undo(_ sender: Any) {
+        if autonStarted {
+            if sergeant {
+                if let undoTime = autonUndo.last {
+                    autonControlTimes.removeValue(forKey: undoTime)
+                    autonUndo.removeLast()
+                }
+            } else {
+                if let undoTime = autonUndo.last {
+                    autonPresses.removeValue(forKey: undoTime)
+                    autonUndo.removeLast()
+                }
+            }
+        } else if teleOpStarted {
+            if sergeant {
+                if let undoTime = teleOpUndo.last {
+                    teleOpControlTimes.removeValue(forKey: undoTime)
+                    teleOpUndo.removeLast()
+                }
+            } else {
+                if let undoTime = teleOpUndo.last {
+                    teleOpPresses.removeValue(forKey: undoTime)
+                    teleOpUndo.removeLast()
+                }
+            }
         }
     }
     
     @IBAction func actionButtonPressed(_ sender: Any) {
         if actionButton.currentTitle == "Confirm Starting Position" {
+            initialBotPosition.isEnabled = false
             startingPosition = initialBotPosition.value
             actionButton.setTitle("Start Auton", for: .normal)
         } else if actionButton.currentTitle == "Start Auton" {
-            counter = 15
+            counter = 1//15
             autonStartTime = NSDate().timeIntervalSince1970
             autonStarted = true
             actionButton.setTitle("Auton Started", for: .normal)
@@ -134,7 +175,7 @@ class FieldViewController: UIViewController {
     
     func autonEnd() {
         print(autonPresses)
-        counter = 15//135
+        counter = 1//135
         autonStarted = false
         teleOpStartTime = NSDate().timeIntervalSince1970
         teleOpStarted = true
@@ -149,6 +190,8 @@ class FieldViewController: UIViewController {
         timer.invalidate()
         startingPosition = initialBotPosition.value
         appdelegate.shouldRotate = true
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
         performSegue(withIdentifier: "ToInfoSegue", sender: self)
     }
     
@@ -158,13 +201,31 @@ class FieldViewController: UIViewController {
         appdelegate.shouldRotate = false
         let value = UIInterfaceOrientation.landscapeLeft.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
-        if scoutingUserInfo.scouting.blue {
-            fieldImage.transform = fieldImage.transform.rotated(by: CGFloat.pi)
+        if UIDevice.current.isSmall {
+            undoHeight.constant -= 26.0
         }
+        if scoutingUserInfo.scouting.blue {
+            initialPositionXConstraint.constant = view.frame.maxX - 25.0
+        } else {
+            initialPositionXConstraint.constant = -133
+        }
+        self.view.layoutIfNeeded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         UIApplication.shared.delegate?.window??.rootViewController = self
+        if sergeant {
+            initialBotPosition.isHidden = true
+            actionButton.setTitle("Start Auton", for: .normal)
+        } else {
+            showAlert(currentVC: self, title: "You are scouting team #\(scoutingUserInfo.scouting.team)", text: "")
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        initialBotPosition.transform = CGAffineTransform(rotationAngle: scoutingUserInfo.scouting.blue ? CGFloat(Double.pi / 2) : -(CGFloat(Double.pi / 2)))
     }
     
     override func didReceiveMemoryWarning() {
