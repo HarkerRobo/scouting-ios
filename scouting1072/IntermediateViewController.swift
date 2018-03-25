@@ -51,7 +51,7 @@ class IntermediateViewController: UIViewController, UITextFieldDelegate {
         SignInViewController().performRequest(requestType: .delete)
         GIDSignIn.sharedInstance().signOut()
         justSignedOut = true
-        session = URLSession(configuration: .default)
+//        session = URLSession(configuration: .default)
         shouldBeSignedIn = false
         performSegue(withIdentifier: "InterToSignIn", sender: self)
     }
@@ -60,7 +60,7 @@ class IntermediateViewController: UIViewController, UITextFieldDelegate {
         print("button pressed")
         let dispatchGroup = DispatchGroup()
         if let _ = Int(roundNumber.text!) {
-            if let url = URL(string: "https://robotics.harker.org/member/scouting/request/\(roundNumber.text!))") {
+            if let url = URL(string: "\(hostname)/member/scouting/request/\(roundNumber.text!))") {
                 print(url)
                 var request = URLRequest(url: url)
                 request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")

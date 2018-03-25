@@ -7,52 +7,19 @@
 //
 
 import UIKit
-import Google
-import GoogleSignIn
 
 extension Notification.Name {
     static let userSignedIn = Notification.Name("userSignedIn")
 }
 
-var user : GIDGoogleUser? {
-    didSet {
-        NotificationCenter.default.post(Notification(name: .userSignedIn))
-    }
-}
-
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    func sign(_ signIn: GIDSignIn!, didSignInFor userSigned: GIDGoogleUser!, withError error: Error!) {
-        user = userSigned
-    }
 
+    var session = URLSession(configuration: .default)
     var window : UIWindow?
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        var configureError: NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(String(describing: configureError))")
-        GIDSignIn.sharedInstance().delegate = self
-        return true
-    }
-    private func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url as URL!, sourceApplication: sourceApplication, annotation: annotation)
-    }
-    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
-                withError error: NSError!) {
-        if (error == nil) {
-            // Perform any operations on signed in user here.
-        } else {
-            print("\(error.localizedDescription)")
-        }
-    }
     
-    private func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
-                withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-        // ...
-    }
+    var hostname = "https://robotics.harker.org"
     
     static func shared() -> AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
@@ -66,6 +33,77 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             return UIInterfaceOrientationMask.portrait
         }
         return UIInterfaceOrientationMask.landscape
+        
+    }
+    
+    var inSession = false
+    var httpResponse : HTTPURLResponse? = nil
+    var task : URLSessionDataTask? = nil
+    var loggedIn = false
+    var fromSelf = false
+    
+    
+    func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        
+        let hauthToken = url.absoluteString.replacingOccurrences(of: "scouting1072://login?token=", with: "hauth")
+
+        let dispatchGroup = DispatchGroup()
+        let url = URL(string: hostname + "/member/token")!
+        var request = URLRequest(url: url)
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "post"
+        
+            let restString = "idtoken=\(hauthToken)"
+            request.httpBody = restString.data(using: .utf8)
+        
+        dispatchGroup.enter()
+        
+        var task : URLSessionDataTask? = nil
+        task = session.dataTask(with: request) { data, response, error in
+            if let httpStatus = response as? HTTPURLResponse {
+                if httpStatus.statusCode != 200 {
+                    let alertController = UIAlertController(title: "Signin Error", message: "Your signin request has expired. Please try again. ", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+                    alertController.addAction(okAction)
+                    
+                    self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+                    return;
+                }
+                
+                self.httpResponse = httpStatus
+                if let fields = self.httpResponse?.allHeaderFields as? [String : String] {
+                    let cookies = HTTPCookie.cookies(withResponseHeaderFields: fields, for: response!.url!)
+                    HTTPCookieStorage.shared.setCookies(cookies, for: response!.url!, mainDocumentURL: nil)
+                    for cookie in cookies {
+                        print(cookie.name)
+                    }
+                }
+                
+                NotificationCenter.default.post(name: NSNotification.Name("userSignedIn"), object: nil, userInfo: nil)
+
+            }
+            print(self.httpResponse?.statusCode as Any)
+            dispatchGroup.leave()
+        }
+        task?.resume();
+//        dispatchGroup.notify(queue: .main) {
+//            if self.fromSelf {
+//                self.labelCheck()
+//                self.performSegue(withIdentifier: "SignInToInterSegue", sender: self)
+//            }
+//        }
+        
+        return true
+    }
+    
+    func applicationDidFinishLaunching(_ application: UIApplication) {
+        if let path = Bundle.main.path(forResource: "Info", ofType: "plist") {
+            let dictRoot = NSDictionary(contentsOfFile: path)
+            if let dict = dictRoot {
+                hostname = dict["hostname"] as! String
+            }
+        }
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

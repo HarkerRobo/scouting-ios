@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="landscape">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,11 +16,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SignInViewController" customModule="scouting1072" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Scouting!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K78-4N-POO">
-                                <rect key="frame" x="64" y="63" width="440" height="28"/>
+                                <rect key="frame" x="64" y="107" width="247" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="6qh-QN-vMy"/>
                                 </constraints>
@@ -28,15 +28,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PmE-bI-md1" customClass="GIDSignInButton">
-                                <rect key="frame" x="136" y="310" width="296" height="47"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hbC-u8-jzj">
-                                <rect key="frame" x="274" y="190" width="20" height="20"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hbC-u8-jzj">
+                                <rect key="frame" x="177.66666666666666" y="190" width="20" height="20"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Getting response from server..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQ4-kz-cN2">
-                                <rect key="frame" x="-0.5" y="89" width="569" height="28"/>
+                                <rect key="frame" x="-0.66666666666665719" y="133" width="376.33333333333326" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="fVL-lT-Biz"/>
                                 </constraints>
@@ -44,21 +40,34 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="d3m-C8-06q">
+                                <rect key="frame" x="240" y="145" width="161" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Yu7-mN-2zy">
+                                        <rect key="frame" x="0.0" y="0.0" width="161" height="50"/>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3K-A7-kH0">
+                                <rect key="frame" x="107" y="391" width="161" height="30"/>
+                                <state key="normal" title="Sign in with HarkerAuth"/>
+                                <connections>
+                                    <action selector="signInHauth" destination="BYZ-38-t0r" eventType="touchDown" id="0y5-7A-LbW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="K78-4N-POO" firstAttribute="centerX" secondItem="PmE-bI-md1" secondAttribute="centerX" id="3dH-HV-09h"/>
                             <constraint firstItem="fQ4-kz-cN2" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" constant="1" id="52q-qJ-nGp"/>
-                            <constraint firstItem="PmE-bI-md1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="136" placeholder="YES" id="86m-1p-qNm"/>
                             <constraint firstItem="K78-4N-POO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8wz-KS-FAu"/>
+                            <constraint firstItem="p3K-A7-kH0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="M3l-iP-WID"/>
                             <constraint firstItem="fQ4-kz-cN2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WkI-iB-Hbw"/>
                             <constraint firstItem="hbC-u8-jzj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YM9-Gf-pHG"/>
-                            <constraint firstItem="hbC-u8-jzj" firstAttribute="top" secondItem="fQ4-kz-cN2" secondAttribute="bottom" constant="73" id="Zow-ZZ-PR7"/>
                             <constraint firstItem="fQ4-kz-cN2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="89" id="k4D-Ge-W6T"/>
-                            <constraint firstItem="PmE-bI-md1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="l7s-Wy-ZD3"/>
                             <constraint firstItem="K78-4N-POO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="l8R-t5-QFl"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="PmE-bI-md1" secondAttribute="bottom" constant="310" placeholder="YES" id="qKZ-AN-Q9n"/>
                             <constraint firstItem="K78-4N-POO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="63" id="w1b-Xz-2uf"/>
+                            <constraint firstItem="p3K-A7-kH0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ywO-tP-3O3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -67,7 +76,6 @@
                         <outlet property="activityIndicator" destination="hbC-u8-jzj" id="AK4-Yo-dV9"/>
                         <outlet property="label" destination="K78-4N-POO" id="5fq-JG-BwC"/>
                         <outlet property="responseCode" destination="fQ4-kz-cN2" id="ckB-r4-18a"/>
-                        <outlet property="signInButton" destination="PmE-bI-md1" id="sFs-U3-UdN"/>
                         <segue destination="RsB-Io-eKk" kind="show" identifier="SignInToInterSegue" id="zHN-VL-VKt"/>
                     </connections>
                 </viewController>
@@ -78,20 +86,20 @@
         <!--Intermediate View Controller-->
         <scene sceneID="JEO-J4-ReY">
             <objects>
-                <viewController id="RsB-Io-eKk" customClass="IntermediateViewController" customModule="scouting1072" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="intermediate" id="RsB-Io-eKk" customClass="IntermediateViewController" customModule="scouting1072" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" ambiguous="YES" id="Ezw-Ia-aEd">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="440-UJ-FOX">
-                                <rect key="frame" x="254.5" y="377" width="60" height="30"/>
+                                <rect key="frame" x="158" y="377" width="60" height="30"/>
                                 <state key="normal" title="Sign Out"/>
                                 <connections>
                                     <action selector="signOut:" destination="RsB-Io-eKk" eventType="touchUpInside" id="5hN-m6-Bwp"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="An error occurred. Either the match number is invalid or the server is not working properly. Please try again." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pPg-7C-r9d">
-                                <rect key="frame" x="115.5" y="225" width="337" height="64"/>
+                                <rect key="frame" x="19" y="225" width="337" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="337" id="bXm-wn-zH0"/>
                                     <constraint firstAttribute="height" constant="64" id="gRe-MD-y59"/>
@@ -101,7 +109,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Please enter the match number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pen-gQ-Xtu">
-                                <rect key="frame" x="164.5" y="143" width="240" height="21"/>
+                                <rect key="frame" x="68" y="143" width="240" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="b6d-R1-5Kp"/>
                                 </constraints>
@@ -110,7 +118,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L4C-6b-XSg">
-                                <rect key="frame" x="126" y="187" width="316" height="30"/>
+                                <rect key="frame" x="126" y="187" width="123" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="GCN-S6-PQD"/>
                                 </constraints>
@@ -119,7 +127,7 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSw-J2-3Hb">
-                                <rect key="frame" x="251.5" y="319" width="66" height="29"/>
+                                <rect key="frame" x="155" y="319" width="66" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="4jU-SD-Ckr"/>
                                 </constraints>
@@ -130,7 +138,7 @@
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="deB-SN-Mpo">
-                                <rect key="frame" x="273.5" y="247" width="20" height="20"/>
+                                <rect key="frame" x="177" y="247" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -169,14 +177,14 @@
             <objects>
                 <viewController id="oba-64-F2J" customClass="FieldViewController" customModule="scouting1072" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sox-xY-q1d">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="field.png" translatesAutoresizingMaskIntoConstraints="NO" id="BVt-Bl-7pY">
-                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnk-9V-4Bz" customClass="Switch" customModule="scouting1072" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="125" width="37" height="50"/>
+                                <rect key="frame" x="0.0" y="169" width="37" height="409"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="37" id="bVL-7B-Jvf"/>
                                     <constraint firstAttribute="height" constant="50" id="ra1-9R-cfx"/>
@@ -187,21 +195,21 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pl9-sN-xxd" customClass="Switch" customModule="scouting1072" customModuleProvider="target">
-                                <rect key="frame" x="366" y="183" width="57" height="30"/>
+                                <rect key="frame" x="173" y="210" width="57" height="30"/>
                                 <state key="normal" title="10_0_8"/>
                                 <connections>
                                     <action selector="blueControlBlue:" destination="oba-64-F2J" eventType="touchUpInside" id="ab4-0x-Jaz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Icf-84-0LE" customClass="Switch" customModule="scouting1072" customModuleProvider="target">
-                                <rect key="frame" x="366" y="145.5" width="57" height="30"/>
+                                <rect key="frame" x="173" y="181" width="57" height="30"/>
                                 <state key="normal" title="10_0_7"/>
                                 <connections>
                                     <action selector="noneControlBlue:" destination="oba-64-F2J" eventType="touchUpInside" id="vkc-9U-1he"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0C-B5-m6Y" customClass="Switch" customModule="scouting1072" customModuleProvider="target">
-                                <rect key="frame" x="366" y="107" width="57" height="38.5"/>
+                                <rect key="frame" x="173" y="151" width="57" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="57" id="7iw-lc-w3s"/>
                                 </constraints>
@@ -211,21 +219,21 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOY-L8-0t8" customClass="Switch" customModule="scouting1072" customModuleProvider="target">
-                                <rect key="frame" x="255.5" y="183" width="57" height="30"/>
+                                <rect key="frame" x="159" y="210" width="57" height="30"/>
                                 <state key="normal" title="10_0_5"/>
                                 <connections>
                                     <action selector="blueControlScale:" destination="oba-64-F2J" eventType="touchUpInside" id="kBz-96-5Fu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FH3-PJ-stx" customClass="Switch" customModule="scouting1072" customModuleProvider="target">
-                                <rect key="frame" x="255.5" y="145.5" width="57" height="30"/>
+                                <rect key="frame" x="159" y="181" width="57" height="30"/>
                                 <state key="normal" title="10_0_4"/>
                                 <connections>
                                     <action selector="noneControlScale:" destination="oba-64-F2J" eventType="touchUpInside" id="VBY-MX-92q"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dn-4z-xFg" customClass="Switch" customModule="scouting1072" customModuleProvider="target">
-                                <rect key="frame" x="255.5" y="107" width="57" height="38.5"/>
+                                <rect key="frame" x="159" y="151" width="57" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="57" id="sFh-H7-cB7"/>
                                 </constraints>
@@ -235,36 +243,36 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jte-oF-eEr">
-                                <rect key="frame" x="262.5" y="43" width="44" height="21"/>
+                                <rect key="frame" x="166" y="87" width="44" height="21"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvd-2R-XEG" customClass="Switch" customModule="scouting1072" customModuleProvider="target">
-                                <rect key="frame" x="366" y="107" width="57" height="106"/>
+                                <rect key="frame" x="173" y="151" width="57" height="89"/>
                                 <state key="normal" title="0_0_2"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pxg-cE-qa0" customClass="Switch" customModule="scouting1072" customModuleProvider="target">
-                                <rect key="frame" x="144" y="183" width="57" height="30"/>
+                                <rect key="frame" x="144" y="210" width="57" height="30"/>
                                 <state key="normal" title="10_0_2"/>
                                 <connections>
                                     <action selector="blueControlRed:" destination="oba-64-F2J" eventType="touchUpInside" id="WNJ-Ax-Ik7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GmT-mE-NWG" customClass="Switch" customModule="scouting1072" customModuleProvider="target">
-                                <rect key="frame" x="255.5" y="40" width="57" height="240"/>
+                                <rect key="frame" x="159" y="67" width="57" height="257"/>
                                 <state key="normal" title="0_0_1"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktL-Hm-89M" customClass="Switch" customModule="scouting1072" customModuleProvider="target">
-                                <rect key="frame" x="144" y="145.5" width="57" height="30"/>
+                                <rect key="frame" x="144" y="181" width="57" height="30"/>
                                 <state key="normal" title="10_0_1"/>
                                 <connections>
                                     <action selector="noneControlRed:" destination="oba-64-F2J" eventType="touchUpInside" id="g8X-K8-Qzp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diG-H4-bR7" customClass="Switch" customModule="scouting1072" customModuleProvider="target">
-                                <rect key="frame" x="144" y="107" width="57" height="38.5"/>
+                                <rect key="frame" x="144" y="151" width="57" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="57" id="sNd-UJ-9Uc"/>
                                 </constraints>
@@ -274,11 +282,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I3d-vd-FQY" customClass="Switch" customModule="scouting1072" customModuleProvider="target">
-                                <rect key="frame" x="144" y="107" width="57" height="106"/>
+                                <rect key="frame" x="144" y="151" width="57" height="89"/>
                                 <state key="normal" title="0_0_0"/>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-100" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="1qU-FF-cZ5">
-                                <rect key="frame" x="-133" y="145.5" width="312" height="30"/>
+                                <rect key="frame" x="-133" y="396.66666666666669" width="312" height="30"/>
                                 <color key="tintColor" red="0.7175678014755249" green="0.7176927924156189" blue="0.71755987405776978" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="308" id="LA3-Qi-Ksf"/>
@@ -286,7 +294,7 @@
                                 </constraints>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dm-0B-PTv">
-                                <rect key="frame" x="482" y="304" width="46" height="30"/>
+                                <rect key="frame" x="289" y="348" width="46" height="30"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="Nss-kV-wni"/>
@@ -297,7 +305,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="muN-B3-Fov" customClass="Switch" customModule="scouting1072" customModuleProvider="target">
-                                <rect key="frame" x="531" y="198" width="37" height="50"/>
+                                <rect key="frame" x="338" y="242" width="37" height="409"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="7J4-dZ-nOW"/>
                                     <constraint firstAttribute="width" constant="37" id="Dkk-qB-GuK"/>
@@ -308,7 +316,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jye-dq-C5P">
-                                <rect key="frame" x="198.5" y="304" width="172" height="30"/>
+                                <rect key="frame" x="102" y="348" width="172" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Confirm Starting Position"/>
                                 <connections>
@@ -412,11 +420,11 @@
             <objects>
                 <viewController id="ifz-h6-wJF" customClass="OtherInfoViewController" customModule="scouting1072" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IzI-eN-vBI">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="X92-CY-JNJ">
-                                <rect key="frame" x="15" y="167" width="538" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="X92-CY-JNJ">
+                                <rect key="frame" x="15" y="191" width="345" height="29"/>
                                 <segments>
                                     <segment title="1"/>
                                     <segment title="2"/>
@@ -427,7 +435,7 @@
                                 </segments>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQZ-nf-uXh">
-                                <rect key="frame" x="15" y="6" width="538" height="134"/>
+                                <rect key="frame" x="15" y="50" width="290" height="134"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="134" id="QW1-jE-Sve"/>
                                     <constraint firstAttribute="width" constant="290" id="ZWk-sQ-PPo"/>
@@ -442,8 +450,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="z4Q-2N-HtE">
-                                <rect key="frame" x="15" y="227.5" width="208" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="z4Q-2N-HtE">
+                                <rect key="frame" x="15" y="251.66666666666663" width="208" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="208" id="p5f-rK-HRa"/>
                                 </constraints>
@@ -452,14 +460,14 @@
                                     <segment title="Yes"/>
                                 </segments>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Did the robot end the round on the platform?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNm-vI-8oe">
-                                <rect key="frame" x="15" y="201" width="538" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Did the robot end the round on the platform?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNm-vI-8oe">
+                                <rect key="frame" x="15" y="225" width="345" height="20.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Tbo-mb-HCZ">
-                                <rect key="frame" x="15" y="288" width="208" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Tbo-mb-HCZ">
+                                <rect key="frame" x="15" y="312" width="208" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="208" id="zzn-f2-dcA"/>
                                 </constraints>
@@ -468,14 +476,14 @@
                                     <segment title="Yes"/>
                                 </segments>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Did the robot cross the line during auton?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIi-bZ-E1Q">
-                                <rect key="frame" x="15" y="261.5" width="538" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Did the robot cross the line during auton?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIi-bZ-E1Q">
+                                <rect key="frame" x="15" y="285.66666666666669" width="345" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Other comments?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBj-9G-D9L">
-                                <rect key="frame" x="15" y="322" width="290" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Other comments?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBj-9G-D9L">
+                                <rect key="frame" x="15" y="346" width="290" height="20.666666666666686"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="290" id="Q9R-li-K28"/>
                                 </constraints>
@@ -484,13 +492,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2K1-TG-h5l">
-                                <rect key="frame" x="15" y="245" width="538" height="0.0"/>
+                                <rect key="frame" x="15" y="372.66666666666674" width="345" height="364.33333333333326"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deh-Zm-wUI">
-                                <rect key="frame" x="263.5" y="265" width="41" height="35"/>
+                                <rect key="frame" x="167" y="757" width="41" height="35"/>
                                 <state key="normal" title="Finish"/>
                                 <connections>
                                     <action selector="finish:" destination="ifz-h6-wJF" eventType="touchUpInside" id="xa5-Qo-rSI"/>
@@ -552,7 +560,6 @@
         <image name="field.png" width="1098" height="617"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cej-Z7-0i1"/>
-        <segue reference="QEI-dJ-c33"/>
+        <segue reference="zHN-VL-VKt"/>
     </inferredMetricsTieBreakers>
 </document>

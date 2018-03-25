@@ -8,11 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6C02CBBF202E55A700607242 /* FieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C02CBBE202E55A600607242 /* FieldViewController.swift */; };
-		6C51CE80201BF944008E7A14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C51CE7F201BF944008E7A14 /* GoogleService-Info.plist */; };
 		6C8F1F46202431DE00E523C8 /* IntermediateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8F1F45202431DE00E523C8 /* IntermediateViewController.swift */; };
-		6CA5BEFE2065826E009CB984 /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA5BEFF2065826E009CB984 /* GoogleToolboxForMac.framework */; };
-		6CA5BF0020658275009CB984 /* GTMOAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA5BF0220658275009CB984 /* GTMOAuth2.framework */; };
-		6CA5BF0120658275009CB984 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA5BF0320658275009CB984 /* GTMSessionFetcher.framework */; };
 		6CBCE5DC2032187A009E99F5 /* field.png in Resources */ = {isa = PBXBuildFile; fileRef = 6CBCE5DB2032187A009E99F5 /* field.png */; };
 		6CD4E106201A8EE500E83826 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD4E105201A8EE500E83826 /* AppDelegate.swift */; };
 		6CD4E108201A8EE500E83826 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD4E107201A8EE500E83826 /* SignInViewController.swift */; };
@@ -29,7 +25,6 @@
 		32C3880F02D4D6D4B17941F3 /* Pods_scouting1072.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_scouting1072.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B2192CAFCB086AB01C83A34 /* Pods-scouting1072.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-scouting1072.release.xcconfig"; path = "Pods/Target Support Files/Pods-scouting1072/Pods-scouting1072.release.xcconfig"; sourceTree = "<group>"; };
 		6C02CBBE202E55A600607242 /* FieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldViewController.swift; sourceTree = "<group>"; };
-		6C51CE7F201BF944008E7A14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6C7374B7201B94FF0054C5BF /* scouting1072-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "scouting1072-Bridging-Header.h"; sourceTree = "<group>"; };
 		6C8F1F45202431DE00E523C8 /* IntermediateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntermediateViewController.swift; sourceTree = "<group>"; };
 		6CA5BEFF2065826E009CB984 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,9 +49,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6CA5BF0020658275009CB984 /* GTMOAuth2.framework in Frameworks */,
-				6CA5BF0120658275009CB984 /* GTMSessionFetcher.framework in Frameworks */,
-				6CA5BEFE2065826E009CB984 /* GoogleToolboxForMac.framework in Frameworks */,
 				6CD4E13D201A966000E83826 /* SystemConfiguration.framework in Frameworks */,
 				6CD4E13B201A965700E83826 /* SafariServices.framework in Frameworks */,
 				F414E2DCB21FDD4D91E6BA70 /* Pods_scouting1072.framework in Frameworks */,
@@ -69,7 +61,6 @@
 		6CD4E0F9201A8EE500E83826 = {
 			isa = PBXGroup;
 			children = (
-				6C51CE7F201BF944008E7A14 /* GoogleService-Info.plist */,
 				6CD4E104201A8EE500E83826 /* scouting1072 */,
 				6CD4E103201A8EE500E83826 /* Products */,
 				6CD4E139201A965600E83826 /* Frameworks */,
@@ -162,6 +153,11 @@
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -189,7 +185,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CBCE5DC2032187A009E99F5 /* field.png in Resources */,
-				6C51CE80201BF944008E7A14 /* GoogleService-Info.plist in Resources */,
 				6CD4E10B201A8EE500E83826 /* Main.storyboard in Resources */,
 				6CFF7D012038FD60008EC1BE /* Assets.xcassets in Resources */,
 			);
@@ -231,7 +226,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -402,7 +397,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MGX2Y8QTWG;
+				DEVELOPMENT_TEAM = MQGNUJ888Y;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -431,7 +426,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MGX2Y8QTWG;
+				DEVELOPMENT_TEAM = MQGNUJ888Y;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

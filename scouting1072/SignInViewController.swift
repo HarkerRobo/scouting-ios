@@ -10,7 +10,10 @@ import UIKit
 import Google
 import GoogleSignIn
 
-var session = URLSession(configuration: .default)
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
+let session = appDelegate.session
+let hostname = appDelegate.hostname
+
 var shouldBeSignedIn = false
 
 let normalDevices = ["iPhone7,2", "iPhone7,1", "iPhone8,1", "iPhone8,2", "iPhone9,1", "iPhone9,3", "iPhone9,2", "iPhone9,4", "iPhone10,1", "iPhone10,4", "iPhone10,2", "iPhone10,5", "iPhone10,3", "iPhone10,6"]
@@ -91,25 +94,31 @@ public enum RequestType: CustomStringConvertible {
     }
 }
 
-class SignInViewController: UIViewController, GIDSignInUIDelegate {
-    @IBOutlet weak var signInButton: GIDSignInButton!
+class SignInViewController: UIViewController {
+
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var responseCode: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    
+    @IBAction public func signInHauth() {
+        let url = URL(string: hostname + "/member/signin/hauth/mobile")
+        
+        let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
+            let loginLink = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            UIApplication.shared.open(URL(string : loginLink! as String)!, options: [:], completionHandler: { (status) in
+                // do nothing
+            })
+        }
+        
+        task.resume()
+    }
+    
     public func labelCheck() {
-        if let userEmail = GIDSignIn.sharedInstance().currentUser?.profile.email {
-            label.text? = userEmail
-            responseCode.isHidden = false
-        } else {
-            label.text? = "Welcome to Scouting!"
-            inSession = false
-        }
-        if httpResponse?.statusCode == 200 {
-            responseCode.text = "Successfully \((GIDSignIn.sharedInstance().currentUser?.profile.email != nil) ? "connected to" : "disconnected from") server (200)"
-        } else {
-            responseCode.text = "Received unexpected response \(httpResponse!.statusCode))"
-        }
+        
+            label.text? = "You are signed in!"
+            inSession = true
+        
     }
     
     var inSession = false
@@ -120,51 +129,7 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate {
     
     public func performRequest(requestType: RequestType) {
         if let _ = GIDSignIn.sharedInstance().currentUser?.profile.email {
-            let dispatchGroup = DispatchGroup()
-            let url = URL(string: "http://robotics.harker.org/member/token")!
-            var request = URLRequest(url: url)
-            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-            request.httpMethod = requestType.description
-            if requestType == .post && loggedIn {
-                let restString = "idtoken=\((user?.authentication.idToken)!)"
-                request.httpBody = restString.data(using: .utf8)
-            }
-            dispatchGroup.enter()
-            task = session.dataTask(with: request) { data, response, error in
-                if let httpStatus = response as? HTTPURLResponse {
-                    if httpStatus.statusCode != 200 {
-                        print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                    } else {
-                        print(httpStatus.statusCode as Any)
-                        self.inSession = true
-                    }
-                    self.httpResponse = httpStatus
-                    if let fields = self.httpResponse?.allHeaderFields as? [String : String] {
-                        let cookies = HTTPCookie.cookies(withResponseHeaderFields: fields, for: response!.url!)
-                        HTTPCookieStorage.shared.setCookies(cookies, for: response!.url!, mainDocumentURL: nil)
-                        for cookie in cookies {
-                            print(cookie.name)
-                        }
-                    }
-                }
-                print(self.httpResponse?.statusCode as Any)
-                dispatchGroup.leave()
-            }
-            switch requestType {
-            case .delete:
-                task?.cancel()
-                task = nil
-                inSession = false
-            default:
-                task?.resume()
-                self.activityIndicator.isHidden = false
-            }
-            dispatchGroup.notify(queue: .main) {
-                if self.fromSelf {
-                    self.labelCheck()
-                    self.performSegue(withIdentifier: "SignInToInterSegue", sender: self)
-                }
-            }
+            
         } else {
             if shouldBeSignedIn {
                 showAlert(currentVC: self, title: "Sign-in failed!", text: "Please restart the app.")
@@ -175,16 +140,15 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate {
     
     @objc func signIn() {
         if !justSignedOut {
-            print("\n\(String(describing: user?.profile.email))\n")
+            print("\n\(String(describing: "PLACEHOLDER user?.profile.email"))\n")
             self.fromSelf = true
-            if let _ = GIDSignIn.sharedInstance().currentUser?.profile {
                 self.loggedIn = true
-            } else {
-                self.loggedIn = false
-            }
             self.performRequest(requestType: .post)
             shouldBeSignedIn = true
             justSignedOut = false
+            
+            self.labelCheck()
+            self.performSegue(withIdentifier: "SignInToInterSegue", sender: self)
         } else {
             loggedIn = false
         }
@@ -192,16 +156,14 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        GIDSignIn.sharedInstance().signOut()
-        GIDSignIn.sharedInstance().uiDelegate = self
         responseCode.isHidden = true
         activityIndicator.isHidden = true
         if !UIDevice.current.isSupported {
-            signInButton.isHidden = true
+//            signInButton.isHidden = true
             label.isHidden = true
         }
         shouldBeSignedIn = false
-        NotificationCenter.default.addObserver(self, selector: #selector(signIn), name: NSNotification.Name.userSignedIn, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(signIn), name: NSNotification.Name("userSignedIn"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {

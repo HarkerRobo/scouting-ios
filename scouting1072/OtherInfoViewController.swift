@@ -80,15 +80,15 @@ class OtherInfoViewController: UIViewController {
     var httpResponse : HTTPURLResponse? = nil
     
     public func performRequest(requestType: RequestType) {
-        if let _ = GIDSignIn.sharedInstance().currentUser?.profile.email {
+        
             let dispatchGroup = DispatchGroup()
-            let url = URL(string: "http://robotics.harker.org/member/scouting/upload")!
+            let url = URL(string: "\(hostname)/member/scouting/upload")!
             var request = URLRequest(url: url)
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.httpMethod = requestType.description
             var bodyData = [
                 "headers": [
-                    "email": "\(GIDSignIn.sharedInstance().currentUser.profile.email!)",
+//                    "email": "\(GIDSignIn.sharedInstance().currentUser.profile.email!)",
                     "rank": sergeant ? 10 : 0,
                     "blue": "\(scoutingUserInfo.scouting.blue)",
                     "team": scoutingUserInfo.scouting.team,
@@ -124,7 +124,7 @@ class OtherInfoViewController: UIViewController {
             task?.resume()
             dispatchGroup.notify(queue: .main) {
                 if self.httpResponse?.statusCode == 200 {
-                    print("Data sent successfully")
+                    print("Data sent successfully. Thank you for scouting!")
                     self.performSegue(withIdentifier: "OtherToInterSegue", sender: self)
                 } else {
                     print("Error attempting to upload data (\(self.httpResponse!.statusCode))")
@@ -132,7 +132,7 @@ class OtherInfoViewController: UIViewController {
                 self.task?.cancel()
                 self.task = nil
             }
-        }
+        
     }
     
     @objc func dismissKeyboard() {
