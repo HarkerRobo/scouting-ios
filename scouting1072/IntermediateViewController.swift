@@ -53,6 +53,7 @@ class IntermediateViewController: UIViewController, UITextFieldDelegate {
         justSignedOut = true
         session = URLSession(configuration: .default)
         shouldBeSignedIn = false
+        user = nil
         performSegue(withIdentifier: "InterToSignIn", sender: self)
     }
     

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class Switch: UIButton {
     override func awakeFromNib() {
@@ -54,11 +55,30 @@ class Switch: UIButton {
         }
     }
     
+    func updateLabel() {
+        if let name = self.titleLabel?.text{
+            switch name {
+            case "0_0_0":
+                NotificationCenter.default.post(Notification(name: .newCubeHome))
+            case "0_0_1":
+                NotificationCenter.default.post(Notification(name: .newCubeScale))
+            case "0_0_2":
+                NotificationCenter.default.post(Notification(name: .newCubeAway))
+            case "0_0_3":
+                NotificationCenter.default.post(Notification(name: .newCubeVault))
+            default: break
+            }
+        }
+    }
+    
     @objc func onPress() {
         print("Switch Pressed")
         self.layer.borderWidth = 100.0
         if autonStarted {
             impact.impactOccurred()
+            if !UIDevice.current.hasHapticFeedback {
+                AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+            }
             let date = NSDate().timeIntervalSince1970
             if sergeant {
                 autonControlTimes[date] = self.titleLabel?.text
@@ -66,8 +86,12 @@ class Switch: UIButton {
                 autonPresses[date] = self.titleLabel?.text
             }
             autonUndo.append(date)
+            updateLabel()
         } else if teleOpStarted {
             impact.impactOccurred()
+            if !UIDevice.current.hasHapticFeedback {
+                AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+            }
             let date = NSDate().timeIntervalSince1970
             if sergeant {
                 teleOpControlTimes[date] = self.titleLabel?.text
@@ -75,6 +99,7 @@ class Switch: UIButton {
                 teleOpPresses[date] = self.titleLabel?.text
             }
             teleOpUndo.append(date)
+            updateLabel()
         }
         if !sergeant {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {

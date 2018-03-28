@@ -21,6 +21,25 @@ public extension Int {
 }
 
 public extension UIDevice {
+    var deviceModel: String {
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        let machineMirror = Mirror(reflecting: systemInfo.machine)
+        let identifier = machineMirror.children.reduce("") { identifier, element in
+            guard let value = element.value as? Int8, value != 0 else { return identifier }
+            return identifier + String(UnicodeScalar(UInt8(value)))
+        }
+        return identifier
+    }
+    
+    var hasHapticFeedback: Bool {
+        if deviceModel == "iPhone7,1" || deviceModel == "iPhone7,2" || isSmall {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     var isSupported: Bool {
         var systemInfo = utsname()
         uname(&systemInfo)
@@ -206,6 +225,8 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        justSignedOut = false
+        user = GIDSignIn.sharedInstance().currentUser
     }
     
     override func didReceiveMemoryWarning() {

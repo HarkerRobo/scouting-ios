@@ -12,11 +12,17 @@ import GoogleSignIn
 
 extension Notification.Name {
     static let userSignedIn = Notification.Name("userSignedIn")
+    static let newCubeHome = Notification.Name("newCubeHome")
+    static let newCubeScale = Notification.Name("newCubeScale")
+    static let newCubeAway = Notification.Name("newCubeAway")
+    static let newCubeVault = Notification.Name("newCubeVault")
 }
 
 var user : GIDGoogleUser? {
     didSet {
-        NotificationCenter.default.post(Notification(name: .userSignedIn))
+        if user != nil {
+            NotificationCenter.default.post(Notification(name: .userSignedIn))
+        }
     }
 }
 

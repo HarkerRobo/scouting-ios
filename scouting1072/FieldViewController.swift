@@ -58,6 +58,11 @@ class FieldViewController: UIViewController {
     @IBOutlet weak var redControlBlue: Switch!
     @IBOutlet weak var noneControlBlue: Switch!
     @IBOutlet weak var blueControlBlue: Switch!
+    @IBOutlet weak var redVaultCounter: UILabel!
+    @IBOutlet weak var blueVaultCounter: UILabel!
+    @IBOutlet weak var leftSwitchCounter: UILabel!
+    @IBOutlet weak var scaleCounter: UILabel!
+    @IBOutlet weak var rightSwitchCounter: UILabel!
     
     @IBAction func redControlRed(_ sender: Any) {
         redControlRed.layer.borderWidth = 100.0
@@ -125,6 +130,7 @@ class FieldViewController: UIViewController {
                 }
             } else {
                 if let undoTime = autonUndo.last {
+                    undoLabel(undoTime)
                     autonPresses.removeValue(forKey: undoTime)
                     autonUndo.removeLast()
                 }
@@ -137,6 +143,7 @@ class FieldViewController: UIViewController {
                 }
             } else {
                 if let undoTime = teleOpUndo.last {
+                    undoLabel(undoTime)
                     teleOpPresses.removeValue(forKey: undoTime)
                     teleOpUndo.removeLast()
                 }
@@ -150,7 +157,7 @@ class FieldViewController: UIViewController {
             startingPosition = initialBotPosition.value
             actionButton.setTitle("Start Auton", for: .normal)
         } else if actionButton.currentTitle == "Start Auton" {
-            counter = 1//15
+            counter = 15
             autonStartTime = NSDate().timeIntervalSince1970
             autonStarted = true
             actionButton.setTitle("Auton Started", for: .normal)
@@ -175,7 +182,7 @@ class FieldViewController: UIViewController {
     
     func autonEnd() {
         print(autonPresses)
-        counter = 1//135
+        counter = 15//135
         autonStarted = false
         teleOpStartTime = NSDate().timeIntervalSince1970
         teleOpStarted = true
@@ -195,6 +202,67 @@ class FieldViewController: UIViewController {
         performSegue(withIdentifier: "ToInfoSegue", sender: self)
     }
     
+    func undoLabel(_ undoTime: Double) {
+        switch teleOpStarted ? teleOpPresses[undoTime]! : autonPresses[undoTime]! {
+        case "0_0_0":
+            if scoutingUserInfo.scouting.blue {
+                rightSwitchCounter.text = String(describing: Int(rightSwitchCounter.text!)! - 1)
+            } else {
+                leftSwitchCounter.text = String(describing: Int(leftSwitchCounter.text!)! - 1)
+            }
+        case "0_0_1":
+            scaleCounter.text = String(describing: Int(scaleCounter.text!)! - 1)
+        case "0_0_2":
+            if scoutingUserInfo.scouting.blue {
+                leftSwitchCounter.text = String(describing: Int(leftSwitchCounter.text!)! - 1)
+            } else {
+                rightSwitchCounter.text = String(describing: Int(rightSwitchCounter.text!)! - 1)
+            }
+        case "0_0_3":
+            if scoutingUserInfo.scouting.blue {
+                blueVaultCounter.text = String(describing: Int(blueVaultCounter.text!)! - 1)
+            } else {
+                redVaultCounter.text = String(describing: Int(redVaultCounter.text!)! - 1)
+            }
+        default: break
+        }
+    }
+    
+    @objc func newCubeHome() {
+        if scoutingUserInfo.scouting.blue {
+            let count = Int(rightSwitchCounter.text!)!
+            rightSwitchCounter.text = String(describing: count + 1)
+        } else {
+            let count = Int(leftSwitchCounter.text!)!
+            leftSwitchCounter.text = String(describing: count + 1)
+        }
+    }
+    
+    @objc func newCubeScale() {
+        let count = Int(scaleCounter.text!)!
+        scaleCounter.text = String(describing: count + 1)
+    }
+    
+    @objc func newCubeAway() {
+        if scoutingUserInfo.scouting.blue {
+            let count = Int(leftSwitchCounter.text!)!
+            leftSwitchCounter.text = String(describing: count + 1)
+        } else {
+            let count = Int(rightSwitchCounter.text!)!
+            rightSwitchCounter.text = String(describing: count + 1)
+        }
+    }
+    
+    @objc func newCubeVault() {
+        if scoutingUserInfo.scouting.blue {
+            let count = Int(blueVaultCounter.text!)!
+            blueVaultCounter.text = String(describing: count + 1)
+        } else {
+            let count = Int(redVaultCounter.text!)!
+            redVaultCounter.text = String(describing: count + 1)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         appdelegate = UIApplication.shared.delegate as! AppDelegate
@@ -210,6 +278,10 @@ class FieldViewController: UIViewController {
             initialPositionXConstraint.constant = -133
         }
         self.view.layoutIfNeeded()
+        NotificationCenter.default.addObserver(self, selector: #selector(newCubeHome), name: NSNotification.Name.newCubeHome, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(newCubeScale), name: NSNotification.Name.newCubeScale, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(newCubeAway), name: NSNotification.Name.newCubeAway, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(newCubeVault), name: NSNotification.Name.newCubeVault, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
