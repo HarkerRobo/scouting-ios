@@ -21,6 +21,7 @@ var autonControlTimes = [Double: String]()
 var teleOpControlTimes = [Double: String]()
 var timer = Timer()
 var crossedLine = false
+var blueLeft = false
 
 func showAlert(currentVC: UIViewController, title: String, text: String) {
     let alertController = UIAlertController(title: title, message: text, preferredStyle: .alert)
@@ -115,6 +116,7 @@ class FieldViewController: UIViewController {
     @IBOutlet weak var fieldImage: UIImageView!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var undoButton: UIButton!
     @IBOutlet weak var initialBotPosition: UISlider! {
         didSet {
             initialBotPosition.transform = CGAffineTransform(rotationAngle: scoutingUserInfo.scouting.blue ? -(CGFloat(Double.pi / 2)) : CGFloat(Double.pi / 2))
@@ -182,7 +184,7 @@ class FieldViewController: UIViewController {
     
     func autonEnd() {
         print(autonPresses)
-        counter = 15//135
+        counter = 135
         autonStarted = false
         teleOpStartTime = NSDate().timeIntervalSince1970
         teleOpStarted = true
@@ -269,6 +271,11 @@ class FieldViewController: UIViewController {
         appdelegate.shouldRotate = false
         let value = UIInterfaceOrientation.landscapeLeft.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
+        if (scoutingUserInfo.scouting.blue && !blueLeft) || (!scoutingUserInfo.scouting.blue && blueLeft){
+            actionButton.transform = actionButton.transform.rotated(by: CGFloat.pi)
+            timerLabel.transform = actionButton.transform.rotated(by: CGFloat.pi)
+            undoButton.transform = undoButton.transform.rotated(by: CGFloat.pi)
+        }
         if UIDevice.current.isSmall {
             undoHeight.constant -= 26.0
         }

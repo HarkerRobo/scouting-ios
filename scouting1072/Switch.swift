@@ -12,7 +12,8 @@ import AudioToolbox
 class Switch: UIButton {
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.addTarget(self, action: #selector(onPress), for: .touchUpInside)
+        self.addTarget(self, action: #selector(onPress), for: .touchDown)
+        self.addTarget(self, action: #selector(onRelease), for: .touchUpInside)
         self.setTitleColor(UIColor.clear, for: .normal)
         self.layer.borderColor = scoutingUserInfo.scouting.rank == 10 ? UIColor.gray.cgColor : scoutingUserInfo.scouting.blue ? UIColor.blue.cgColor : UIColor.red.cgColor
         self.layer.borderWidth = 5.0
@@ -72,12 +73,19 @@ class Switch: UIButton {
     }
     
     @objc func onPress() {
+        if !sergeant && (autonStarted || teleOpStarted) {
+            self.layer.borderWidth = 100.0
+        }
+    }
+    
+    @objc func onRelease() {
         print("Switch Pressed")
-        self.layer.borderWidth = 100.0
         if autonStarted {
             impact.impactOccurred()
-            if !UIDevice.current.hasHapticFeedback {
-                AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+            if UIDevice.current.hasHapticFeedback {
+                impact.impactOccurred()
+            } else {
+                vibrate()
             }
             let date = NSDate().timeIntervalSince1970
             if sergeant {
@@ -88,9 +96,10 @@ class Switch: UIButton {
             autonUndo.append(date)
             updateLabel()
         } else if teleOpStarted {
-            impact.impactOccurred()
-            if !UIDevice.current.hasHapticFeedback {
-                AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+            if UIDevice.current.hasHapticFeedback {
+                impact.impactOccurred()
+            } else {
+                vibrate()
             }
             let date = NSDate().timeIntervalSince1970
             if sergeant {
@@ -101,10 +110,6 @@ class Switch: UIButton {
             teleOpUndo.append(date)
             updateLabel()
         }
-        if !sergeant {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-                self.layer.borderWidth = 5.0
-            })
-        }
+        self.layer.borderWidth = 5.0
     }
 }

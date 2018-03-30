@@ -3,3 +3,6 @@
 //
 
 #import <GoogleSignIn/GoogleSignIn.h>
+#import <AudioToolbox/AudioToolbox.h>
+
+void vibrate();

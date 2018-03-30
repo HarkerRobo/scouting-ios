@@ -9,6 +9,7 @@
 import UIKit
 import Google
 import GoogleSignIn
+import AudioToolbox
 
 var session = URLSession(configuration: .default)
 var shouldBeSignedIn = false
@@ -33,7 +34,7 @@ public extension UIDevice {
     }
     
     var hasHapticFeedback: Bool {
-        if deviceModel == "iPhone7,1" || deviceModel == "iPhone7,2" || isSmall {
+        if deviceModel == "iPhone7,1" || deviceModel == "iPhone7,2" || deviceModel == "iPhone8,1" || deviceModel == "iPhone8,2" || isSmall {
             return false
         } else {
             return true
@@ -127,7 +128,7 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate {
         if httpResponse?.statusCode == 200 {
             responseCode.text = "Successfully \((GIDSignIn.sharedInstance().currentUser?.profile.email != nil) ? "connected to" : "disconnected from") server (200)"
         } else {
-            responseCode.text = "Received unexpected response \(httpResponse!.statusCode))"
+            responseCode.text = "Received unexpected response \(String(describing: httpResponse?.statusCode)))"
         }
     }
     
@@ -177,6 +178,7 @@ class SignInViewController: UIViewController, GIDSignInUIDelegate {
             default:
                 task?.resume()
                 self.activityIndicator.isHidden = false
+                self.activityIndicator.startAnimating()
             }
             dispatchGroup.notify(queue: .main) {
                 if self.fromSelf {

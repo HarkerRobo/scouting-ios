@@ -19,6 +19,8 @@
 		6CD4E10B201A8EE500E83826 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CD4E109201A8EE500E83826 /* Main.storyboard */; };
 		6CD4E13B201A965700E83826 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CD4E13A201A965600E83826 /* SafariServices.framework */; };
 		6CD4E13D201A966000E83826 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CD4E13C201A966000E83826 /* SystemConfiguration.framework */; };
+		6CD83B32206D658000E9C1E8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CD83B31206D658000E9C1E8 /* AudioToolbox.framework */; };
+		6CD85447206D88F200E9C1E8 /* Vibration.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CD85446206D88F200E9C1E8 /* Vibration.m */; };
 		6CE7CECD203117210016E5AD /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE7CECC203117210016E5AD /* Switch.swift */; };
 		6CF756AE203B9F2400A19581 /* OtherInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF756AD203B9F2400A19581 /* OtherInfoViewController.swift */; };
 		6CFF7D012038FD60008EC1BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CFF7D002038FD60008EC1BE /* Assets.xcassets */; };
@@ -43,6 +45,8 @@
 		6CD4E111201A8EE500E83826 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CD4E13A201A965600E83826 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		6CD4E13C201A966000E83826 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6CD83B31206D658000E9C1E8 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		6CD85446206D88F200E9C1E8 /* Vibration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Vibration.m; sourceTree = "<group>"; };
 		6CE7CECC203117210016E5AD /* Switch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
 		6CF756AD203B9F2400A19581 /* OtherInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherInfoViewController.swift; sourceTree = "<group>"; };
 		6CFF7D002038FD60008EC1BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CD83B32206D658000E9C1E8 /* AudioToolbox.framework in Frameworks */,
 				6CA5BF0020658275009CB984 /* GTMOAuth2.framework in Frameworks */,
 				6CA5BF0120658275009CB984 /* GTMSessionFetcher.framework in Frameworks */,
 				6CA5BEFE2065826E009CB984 /* GoogleToolboxForMac.framework in Frameworks */,
@@ -95,6 +100,7 @@
 				6C02CBBE202E55A600607242 /* FieldViewController.swift */,
 				6CF756AD203B9F2400A19581 /* OtherInfoViewController.swift */,
 				6CE7CECC203117210016E5AD /* Switch.swift */,
+				6CD85446206D88F200E9C1E8 /* Vibration.m */,
 				6CD4E109201A8EE500E83826 /* Main.storyboard */,
 				6CFF7D002038FD60008EC1BE /* Assets.xcassets */,
 				6CBCE5DB2032187A009E99F5 /* field.png */,
@@ -106,6 +112,7 @@
 		6CD4E139201A965600E83826 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6CD83B31206D658000E9C1E8 /* AudioToolbox.framework */,
 				6CA5BF0220658275009CB984 /* GTMOAuth2.framework */,
 				6CA5BF0320658275009CB984 /* GTMSessionFetcher.framework */,
 				6CA5BEFF2065826E009CB984 /* GoogleToolboxForMac.framework */,
@@ -263,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CD85447206D88F200E9C1E8 /* Vibration.m in Sources */,
 				6C8F1F46202431DE00E523C8 /* IntermediateViewController.swift in Sources */,
 				6CD4E108201A8EE500E83826 /* SignInViewController.swift in Sources */,
 				6C02CBBF202E55A700607242 /* FieldViewController.swift in Sources */,

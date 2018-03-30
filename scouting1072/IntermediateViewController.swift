@@ -43,10 +43,10 @@ extension Data {
 class IntermediateViewController: UIViewController, UITextFieldDelegate {
     var response : HTTPURLResponse? = nil
     var task : URLSessionDataTask? = nil
+    @IBOutlet weak var blueOnLeft: UISwitch!
     @IBOutlet weak var roundNumber: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     @IBAction func signOut(_ sender: Any) {
         SignInViewController().performRequest(requestType: .delete)
         GIDSignIn.sharedInstance().signOut()
@@ -79,6 +79,7 @@ class IntermediateViewController: UIViewController, UITextFieldDelegate {
                     }
                     DispatchQueue.main.async {
                         self.activityIndicator.isHidden = false
+                        self.activityIndicator.startAnimating()
                     }
                     dispatchGroup.leave()
                 }
@@ -92,13 +93,14 @@ class IntermediateViewController: UIViewController, UITextFieldDelegate {
                         scoutingUserInfo = scoutingInfo
                         sergeant = scoutingUserInfo.scouting.rank == 10
                         print("User is a \(sergeant ? "sergeant" : "private")")
-                        self.activityIndicator.isHidden = true
+                        blueLeft = self.blueOnLeft.isOn
                         self.performSegue(withIdentifier: "InterToAutonSegue", sender: self)
                     } else {
                         printData(jsonInter)
                         print("Failure decoding JSON")
                         self.errorLabel.isHidden = false
                     }
+                    self.activityIndicator.isHidden = true
                 }
             } else {
                 print("Invalid URL")

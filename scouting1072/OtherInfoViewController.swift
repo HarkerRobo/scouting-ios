@@ -41,19 +41,6 @@ class OtherInfoViewController: UIViewController {
     @IBOutlet weak var onPlatform: UISegmentedControl!
     @IBOutlet weak var lineCrossed: UISegmentedControl!
     @IBAction func finish(_ sender: Any) {
-         manualDict = ["headers[email]": GIDSignIn.sharedInstance().currentUser.profile.email!, "headers[rank]": sergeant ? 10: 0, "headers[blue]": scoutingUserInfo.scouting.blue, "headers[team]": scoutingUserInfo.scouting.team, "headers[round]": scoutingUserInfo.scouting.round, "headers[tournament_id]": scoutingUserInfo.tournament.id, "data[startPosition]": startingPosition, "data[crossed_line]": lineCrossed.isEnabledForSegment(at: 1), "data[end_platform]": onPlatform.isEnabledForSegment(at: 1), "data[lift]": rampType.selectedSegmentIndex, "data[auton-actions]": [[String: Any]](), "data[teleop-actions]": [[String: Any]]()]
-        var counter = 0
-        for element in sergeant ? autonControlTimes : autonPresses {
-            autonActions.append(["timestamp": "\(element.key)", "action": "\(element.value)"])
-            counter += 1
-        }
-        counter = 0
-        for element in sergeant ? teleOpControlTimes : teleOpPresses {
-            teleOpActions.append(["timestamp": "\(element.key)", "action": "\(element.value)"])
-            counter += 1
-        }
-        manualDict["data[auton-actions]"] = autonActions
-        manualDict["data[teleop-actions]"] = teleOpActions
         dataString = "headers[email]=\(GIDSignIn.sharedInstance().currentUser.profile.email!)&headers[rank]=\(sergeant ? 10 : 0)&headers[blue]=\(scoutingUserInfo.scouting.blue)&headers[team]=\(scoutingUserInfo.scouting.team)&headers[round]=\(scoutingUserInfo.scouting.round)&headers[tournament_id]=\(scoutingUserInfo.tournament.id)&headers[forceUpload]=true&data[start_position]=\(startingPosition)&data[crossed_line]=\(lineCrossed.isEnabledForSegment(at: 1))&data[end_platform]=\(onPlatform.isEnabledForSegment(at: 1))&data[lift]=\(rampType.selectedSegmentIndex)&data[comments]=\(comments.text ?? "")&data[auton-actions]="
         var autonString = String(describing: autonActions)
         autonString.removeFirst()
@@ -86,30 +73,6 @@ class OtherInfoViewController: UIViewController {
             var request = URLRequest(url: url)
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.httpMethod = requestType.description
-            var bodyData = [
-                "headers": [
-                    "email": "\(GIDSignIn.sharedInstance().currentUser.profile.email!)",
-                    "rank": sergeant ? 10 : 0,
-                    "blue": "\(scoutingUserInfo.scouting.blue)",
-                    "team": scoutingUserInfo.scouting.team,
-                    "round": scoutingUserInfo.scouting.round,
-                    "tournament_id": "\(scoutingUserInfo.tournament.id)"
-                ],
-                "data": [
-                    "start_position": startingPosition,
-                    "crossed_line": lineCrossed.isEnabledForSegment(at: 1),
-                    "end_platform": onPlatform.isEnabledForSegment(at: 1),
-                    "lift": rampType.selectedSegmentIndex,
-                    "auton-actions": [
-                    ],
-                    "teleop-actions": [
-                    ]
-                ]
-            ]
-            bodyData["data"]!["auton-actions"] = autonActions
-            bodyData["data"]!["teleop-actions"] = teleOpActions
-            // print(bodyData)
-            let _ = try? JSONSerialization.data(withJSONObject: bodyData)
             request.httpBody = dataString.data(using: .utf8)!
             dispatchGroup.enter()
             task = session.dataTask(with: request) { data, response, error in
