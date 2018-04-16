@@ -41,7 +41,7 @@ class OtherInfoViewController: UIViewController {
     @IBOutlet weak var onPlatform: UISegmentedControl!
     @IBOutlet weak var lineCrossed: UISegmentedControl!
     @IBAction func finish(_ sender: Any) {
-        dataString = "headers[email]=\(GIDSignIn.sharedInstance().currentUser.profile.email!)&headers[rank]=\(sergeant ? 10 : 0)&headers[blue]=\(scoutingUserInfo.scouting.blue)&headers[team]=\(scoutingUserInfo.scouting.team)&headers[round]=\(scoutingUserInfo.scouting.round)&headers[tournament_id]=\(scoutingUserInfo.tournament.id)&headers[forceUpload]=true&data[start_position]=\(startingPosition)&data[crossed_line]=\(lineCrossed.isEnabledForSegment(at: 1))&data[end_platform]=\(onPlatform.isEnabledForSegment(at: 1))&data[lift]=\(rampType.selectedSegmentIndex)&data[comments]=\(comments.text ?? "")&data[auton-actions]="
+        dataString = "headers[email]=\(GIDSignIn.sharedInstance().currentUser.profile.email!)&headers[rank]=\(sergeant ? 10 : 0)&headers[blue]=\(scoutingUserInfo.scouting.blue)&headers[team]=\(scoutingUserInfo.scouting.team)&headers[round]=\(scoutingUserInfo.scouting.round)&headers[tournament_id]=\(scoutingUserInfo.tournament.id)&headers[forceUpload]=true&data[start_position]=\(startingPosition)&data[crossed_line]=\(lineCrossed.selectedSegmentIndex == 1)&data[end_platform]=\(onPlatform.selectedSegmentIndex == 1)&data[lift]=\(rampType.selectedSegmentIndex)&data[comments]=\(comments.text ?? "")&data[auton-actions]="
         var autonString = String(describing: autonActions)
         autonString.removeFirst()
         autonString.removeLast()

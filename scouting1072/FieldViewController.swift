@@ -194,6 +194,15 @@ class FieldViewController: UIViewController {
     }
     
     func teleOpEnd() {
+        for element in sergeant ? autonControlTimes : autonPresses {
+            autonActions.append(["timestamp": "\(element.key)", "action": "\(element.value)"])
+            counter += 1
+        }
+        counter = 0
+        for element in sergeant ? teleOpControlTimes : teleOpPresses {
+            teleOpActions.append(["timestamp": "\(element.key)", "action": "\(element.value)"])
+            counter += 1
+        }
         print(teleOpPresses)
         teleOpStarted = false
         timer.invalidate()
@@ -231,13 +240,8 @@ class FieldViewController: UIViewController {
     }
     
     @objc func newCubeHome() {
-        if scoutingUserInfo.scouting.blue {
-            let count = Int(rightSwitchCounter.text!)!
-            rightSwitchCounter.text = String(describing: count + 1)
-        } else {
-            let count = Int(leftSwitchCounter.text!)!
-            leftSwitchCounter.text = String(describing: count + 1)
-        }
+        let count = Int(leftSwitchCounter.text!)!
+        leftSwitchCounter.text = String(describing: count + 1)
     }
     
     @objc func newCubeScale() {
@@ -246,13 +250,8 @@ class FieldViewController: UIViewController {
     }
     
     @objc func newCubeAway() {
-        if scoutingUserInfo.scouting.blue {
-            let count = Int(leftSwitchCounter.text!)!
-            leftSwitchCounter.text = String(describing: count + 1)
-        } else {
-            let count = Int(rightSwitchCounter.text!)!
-            rightSwitchCounter.text = String(describing: count + 1)
-        }
+        let count = Int(rightSwitchCounter.text!)!
+        rightSwitchCounter.text = String(describing: count + 1)
     }
     
     @objc func newCubeVault() {
@@ -271,18 +270,14 @@ class FieldViewController: UIViewController {
         appdelegate.shouldRotate = false
         let value = UIInterfaceOrientation.landscapeLeft.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
-        if (scoutingUserInfo.scouting.blue && !blueLeft) || (!scoutingUserInfo.scouting.blue && blueLeft){
-            actionButton.transform = actionButton.transform.rotated(by: CGFloat.pi)
-            timerLabel.transform = actionButton.transform.rotated(by: CGFloat.pi)
-            undoButton.transform = undoButton.transform.rotated(by: CGFloat.pi)
-        }
         if UIDevice.current.isSmall {
             undoHeight.constant -= 26.0
         }
         if scoutingUserInfo.scouting.blue {
-            initialPositionXConstraint.constant = view.frame.maxX - 25.0
+            print(UIScreen.main.bounds.width)
+            initialPositionXConstraint.constant = UIScreen.main.bounds.width - 20.0
         } else {
-            initialPositionXConstraint.constant = -133
+            initialPositionXConstraint.constant = 20
         }
         self.view.layoutIfNeeded()
         NotificationCenter.default.addObserver(self, selector: #selector(newCubeHome), name: NSNotification.Name.newCubeHome, object: nil)
@@ -297,8 +292,25 @@ class FieldViewController: UIViewController {
         if sergeant {
             initialBotPosition.isHidden = true
             actionButton.setTitle("Start Auton", for: .normal)
+            redVaultCounter.isHidden = true
+            blueVaultCounter.isHidden = true
+            leftSwitchCounter.isHidden = true
+            scaleCounter.isHidden = true
+            rightSwitchCounter.isHidden = true
         } else {
             showAlert(currentVC: self, title: "You are scouting team #\(scoutingUserInfo.scouting.team)", text: "")
+            redVaultCounter.isHidden = false
+            blueVaultCounter.isHidden = false
+            leftSwitchCounter.isHidden = false
+            scaleCounter.isHidden = false
+            rightSwitchCounter.isHidden = false
+            if scoutingUserInfo.scouting.blue {
+                redVaultCounter.isHidden = true
+                blueVaultCounter.isHidden = false
+            } else {
+                redVaultCounter.isHidden = false
+                blueVaultCounter.isHidden = true
+            }
         }
     }
     

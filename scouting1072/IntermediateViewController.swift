@@ -43,7 +43,6 @@ extension Data {
 class IntermediateViewController: UIViewController, UITextFieldDelegate {
     var response : HTTPURLResponse? = nil
     var task : URLSessionDataTask? = nil
-    @IBOutlet weak var blueOnLeft: UISwitch!
     @IBOutlet weak var roundNumber: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -93,11 +92,18 @@ class IntermediateViewController: UIViewController, UITextFieldDelegate {
                         scoutingUserInfo = scoutingInfo
                         sergeant = scoutingUserInfo.scouting.rank == 10
                         print("User is a \(sergeant ? "sergeant" : "private")")
-                        blueLeft = self.blueOnLeft.isOn
                         self.performSegue(withIdentifier: "InterToAutonSegue", sender: self)
                     } else {
                         printData(jsonInter)
                         print("Failure decoding JSON")
+                        if let responseCode = self.response?.statusCode {
+                            switch responseCode {
+                            case 200: break
+                            case 404: self.errorLabel.text = "That round does not exist. Please select a different round."
+                            case 500: self.errorLabel.text = "This round is already full or it has ended. Please select another round."
+                            default: self.errorLabel.text = "An unknown error occurred. Please try again or try a different round number."
+                            }
+                        }
                         self.errorLabel.isHidden = false
                     }
                     self.activityIndicator.isHidden = true
